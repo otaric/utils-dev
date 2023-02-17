@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from './components/Button'
+import { captalizeText, slugifyText } from './utils/utils'
 
 function App() {
   const [text, setText] = useState('')
@@ -13,27 +14,11 @@ function App() {
   }
 
   function Slugify() {
-    setText(
-      text
-        .toString()
-        .normalize('NFKD')
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\_/g, '-')
-        .replace(/\-\-+/g, '-')
-        .replace(/\-$/g, '')
-    )
+    setText(slugifyText(text))
   }
 
   function Captalize() {
-    const words = text.split(' ')
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i][0].toUpperCase() + words[i].substring(1)
-    }
-    const wordsJoin = words.join(' ')
-    setText(wordsJoin)
+    setText(captalizeText(text))
   }
 
   return (

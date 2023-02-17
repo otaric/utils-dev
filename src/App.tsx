@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import Button from './components/Button'
-import { captalizeText, slugifyText } from './utils/utils'
+import { useState } from "react";
+import Button from "./components/Button";
+import { captalizeText, slugifyText } from "./utils/utils";
 
 function App() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState("");
 
   function Upper() {
-    setText(text.toUpperCase())
+    setText(text.toUpperCase());
   }
 
   function Lower() {
-    setText(text.toLocaleLowerCase())
+    setText(text.toLocaleLowerCase());
   }
 
   function Slugify() {
-    setText(slugifyText(text))
+    setText(slugifyText(text));
   }
 
   function Captalize() {
-    setText(captalizeText(text))
+    setText(captalizeText(text));
   }
 
   return (
-    <div className="flex flex-col items-center justify-center max-w-7xl mx-auto h-screen">
+    <div className="mx-auto flex h-screen max-w-7xl flex-col items-center justify-center">
       <input
-        className="border border-neutral-200 bg-neutral-900 text-neutral-200 focus:outline-none mb-2 w-1/2 p-2"
+        autoFocus
+        className="mb-2 w-1/2 border border-neutral-200 bg-neutral-900 p-2 text-neutral-200 focus:outline-none"
         type="text"
         value={text}
-        onChange={e => {
-          setText(e.target.value)
+        onChange={(e) => {
+          setText(e.target.value);
         }}
       />
 
@@ -39,7 +40,7 @@ function App() {
         <Button click={Captalize} text="Captalize" />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
